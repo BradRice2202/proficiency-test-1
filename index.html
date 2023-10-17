@@ -1,68 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="js/scripts.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div class="container mainContainer">
-        <div class="left">
-            <form id="personalDetailsForm" action="index.php" method="post">
-                <div class="mb-3">
-                  <label for="nameInput" class="form-label d-flex justify-content-center">Name:</label>
-                  <input type="text" class="form-control" id="nameInput" name="firstName" required>
+    <div class="container the-container d-flex align-items-center">
+        <form action="index.php" method="post" id="personalDetailsForm" name="personalDetailsForm">
+            <div class="mainContainer" id="mainContainer">
+                <div class="personsInput d-flex justify-content-center">
+                    <div class="left">
+                        <div id="personalDetailsForm1"]>
+                            <div class="mb-3">
+                                <label for="nameInput" class="form-label d-flex justify-content-center" required>Name:</label>
+                                <input type="text" class="form-control" id="name1Input" name="firstName1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="surnameInput" class="form-label d-flex justify-content-center">Surname:</label>
+                                <input type="text" class="form-control" id="surname1Input" name="surname1">
+                                <label id="surnameInput-error" class="error text-danger d-flex justify-content-center"
+                                    for="surnameInput"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="birthDateInput" class="form-label d-flex justify-content-center">Date of
+                                    birth:</label>
+                                <input type="date" class="form-control" id="birthDate1InputLeft" name="birthdate1"onchange="addToIdFromDobLeft()">
+                                <label id="birthDateInput-error" class="error text-danger d-flex justify-content-center"for="birthDateInput"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="idNoInput" class="form-label d-flex justify-content-center">ID Number:</label>
+                                <input type="text" class="form-control" id="idNo1InputLeft" name="idnumber1">
+                                <label id="idNoInput-error" class="error text-danger d-flex justify-content-center"for="idNoInput"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="middle">
+                        <div id="personalDetailsForm1">
+                            <div class="mb-3">
+                                <label for="nameInput" class="form-label d-flex justify-content-center">Name:</label>
+                                <input type="text" class="form-control" id="name2Input" name="firstName2">
+                                <label id="nameInput-error" class="error text-danger d-flex justify-content-center"
+                                    for="nameInput"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="surnameInput" class="form-label d-flex justify-content-center">Surname:</label>
+                                <input type="text" class="form-control" id="surname2Input" name="surname2">
+                                <label id="surnameInput-error" class="error text-danger d-flex justify-content-center"
+                                    for="surnameInput"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="birthDateInput" class="form-label d-flex justify-content-center">Date of
+                                    birth:</label>
+                                <input type="date" class="form-control" id="birthDate2InputMiddle" name="birthdate2"
+                                    onchange="addToIdFromDobMiddle()">
+                                <label id="birthDateInput-error" class="error text-danger d-flex justify-content-center"
+                                    for="birthDateInput"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="idNoInput" class="form-label d-flex justify-content-center">ID Number:</label>
+                                <input type="text" class="form-control" id="idNo2InputMiddle" name="idnumber2">
+                                <label id="idNoInput-error" class="error text-danger d-flex justify-content-center"
+                                    for="idNoInput"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div id="personalDetailsForm1" action="index.php" method="post">
+                            <div class="mb-3">
+                                <label for="nameInput" class="form-label d-flex justify-content-center">Name:</label>
+                                <input type="text" class="form-control" id="name3Input" name="firstName3">
+                                <label id="nameInput-error" class="error text-danger d-flex justify-content-center"
+                                    for="nameInput"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="surnameInput" class="form-label d-flex justify-content-center">Surname:</label>
+                                <input type="text" class="form-control" id="surname3Input" name="surname3">
+                                <label id="surnameInput-error" class="error text-danger d-flex justify-content-center"
+                                    for="surnameInput"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="birthDateInput" class="form-label d-flex justify-content-center">Date of
+                                    birth:</label>
+                                <input type="date" class="form-control" id="birthDate3InputRight" name="birthdate3"
+                                    onchange="addToIdFromDobRight()">
+                                <label id="birthDateInput-error" class="error text-danger d-flex justify-content-center"
+                                    for="birthDateInput"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="idNoInput" class="form-label d-flex justify-content-center">ID Number:</label>
+                                <input type="text" class="form-control" id="idNo3InputRight" name="idnumber3">
+                                <label id="idNoInput-error" class="error text-danger d-flex justify-content-center"
+                                    for="idNoInput"></label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                  <label for="surnameInput" class="form-label d-flex justify-content-center">Surname:</label>
-                  <input type="text" class="form-control" id="surnameInput" name="surname" required>
+                <div class="submitBtnsContainer">
+                    <div class="btnsContainer">
+                        <button type="submit" class="btn btn-primary mx-1" name="submitBtn">Post</button>
+                        <button type="submit" class="btn btn-danger mx-1">Cancel</button>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="birthDateInput" class="form-label d-flex justify-content-center">Date of birth:</label>
-                    <input type="date" class="form-control" id="birthDateInput" name="birthdate" required onchange="addToIdFromDob()">
-                </div>
-                <div class="mb-3">
-                    <label for="idNoInput" class="form-label d-flex justify-content-center">ID Number:</label>
-                    <input type="number" class="form-control" id="idNoInput" required minlength="13" max="13" name="idnumber">
-                </div>
-                <div class="btnContainer d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary mx-1">Post</button>
-                    <button type="submit" class="btn btn-danger mx-1">Cancel</button>
-                </div>
-            </form>
-        </div>
-        <div class="right">
-            <div class="personOne personList">
-                <ul class="list-group">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                </ul>
             </div>
-            <div class="person2 personList">
-                <ul class="list-group">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                </ul>
+        </form> 
+    </div>
+    <div class="container main-cards-container d-flex">
+        <div class="cards-container">
+            <div class="left">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title" id="personName1">Bradley Rice</h5>
+                      <h4>Birthdate: 22-02-1997</h4>
+                      <h4>ID: 9702225109083</h4>
+                      <a href="#" class="btn btn-primary">Upload to DB</a>
+                      <a href="#" class="btn btn-danger">Remove</a>
+                    </div>
+                  </div>
             </div>
-            <div class="person3 personList">
-                <ul class="list-group">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                </ul>
+            <div class="middle">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title" id="personName2">Danny Rice</h5>
+                      <h4>Birthdate: 14-12-1998</h4>
+                      <h4>ID: 9814121234567</h4>
+                      <a href="#" class="btn btn-primary">Upload to DB</a>
+                      <a href="#" class="btn btn-danger">Remove</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="right">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title" id="personName3">Nick Strouthos</h5>
+                      <h4>Birthdate: 10-02-1997</h4>
+                      <h4>ID: 9702107654321</h4>
+                      <a href="#" class="btn btn-primary">Upload to DB</a>
+                      <a href="#" class="btn btn-danger">Remove</a>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>
+    <script src="js/scripts.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/validation.js"></script>
 </body>
+
 </html>

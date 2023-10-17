@@ -1,5 +1,5 @@
 function addToIdFromDobLeft(){
-    const birthDate = document.getElementById('birthDateInputLeft').value;
+    const birthDate = document.getElementById('birthDate1InputLeft').value;
     const firstOfId = String(birthDate);
 
     var idYear = firstOfId.slice(2,4);
@@ -8,9 +8,9 @@ function addToIdFromDobLeft(){
 
     var idStart = idYear+idMonth+idDay;
 
-    document.getElementById('idNoInputLeft').value = idStart;
+    document.getElementById('idNo1InputLeft').value = idStart;
 
-    var idLen = document.getElementById('idNoInputLeft').value;
+    var idLen = document.getElementById('idNo1InputLeft').value;
 
     var idLen = String(idLen).value;
 
@@ -18,7 +18,7 @@ function addToIdFromDobLeft(){
 }
 
 function addToIdFromDobMiddle(){
-    const birthDate = document.getElementById('birthDateInputMiddle').value;
+    const birthDate = document.getElementById('birthDate2InputMiddle').value;
     const firstOfId = String(birthDate);
 
     var idYear = firstOfId.slice(2,4);
@@ -27,9 +27,9 @@ function addToIdFromDobMiddle(){
 
     var idStart = idYear+idMonth+idDay;
 
-    document.getElementById('idNoInputMiddle').value = idStart;
+    document.getElementById('idNo2InputMiddle').value = idStart;
 
-    var idLen = document.getElementById('idNoInputMiddle').value;
+    var idLen = document.getElementById('idNo2InputMiddle').value;
 
     var idLen = String(idLen).value;
 
@@ -38,7 +38,7 @@ function addToIdFromDobMiddle(){
 }
 
 function addToIdFromDobRight(){
-    const birthDate = document.getElementById('birthDateInputRight').value;
+    const birthDate = document.getElementById('birthDate3InputRight').value;
     const firstOfId = String(birthDate);
 
     var idYear = firstOfId.slice(2,4);
@@ -47,9 +47,9 @@ function addToIdFromDobRight(){
 
     var idStart = idYear+idMonth+idDay;
 
-    document.getElementById('idNoInputRight').value = idStart;
+    document.getElementById('idNo3InputRight').value = idStart;
 
-    var idLen = document.getElementById('idNoInputRight').value;
+    var idLen = document.getElementById('idNo3InputRight').value;
 
     var idLen = String(idLen).value;
 
@@ -67,8 +67,6 @@ function addToIdFromDobRight(){
 //     return;
 
 // };
-
-
 
 function postValues(x){
     if(x == 1)
@@ -98,16 +96,14 @@ function createPeople(name,surname,birthday,id){
     document.getElementById('mainContainer').setAttribute('style', 'display:none !important');
 }
 
-function validate(event) {
-    var firstname1 = document.getElementById('name1Input').value;
-    var firstname2 = document.getElementById('name2Input').value;
-    var firstname3 = document.getElementById('name3Input').value;
-    var var1 = 0.001;
-    if (firstname1 === firstname2 || firstname1 === firstname3 || firstname2 === firstname3) {
-        alert("You have multiple of the same ID numbers");
-        e.preventDefault();
-        return false;
-    }
+// function validate() {
+//     var firstname1 = document.getElementById('name1Input').value;
+//     var firstname2 = document.getElementById('name2Input').value;
+//     var firstname3 = document.getElementById('name3Input').value;
+//     if (firstname1 == firstname2) {
+//         alert("You have multiple of the same ID numbers");
+//         return false;
+//     }
 
-    return true;
-}
+//     return true;
+// }

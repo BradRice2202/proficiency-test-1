@@ -39,7 +39,7 @@ if(isset($_POST['firstname1'])){
         'Birthday' => $birthday1,
         'Id'=>$id1
     ]);
-    // header("Location: index.html");
+    header("Location: index.html");
 }
 
 if(isset($_POST['firstname2'])){
@@ -58,7 +58,7 @@ if(isset($_POST['firstname2'])){
         'Birthday' => $birthday2,
         'Id'=>$id2
     ]);
-    // header("Location: index.html");
+    header("Location: index.html");
 }
 
 if(isset($_POST['firstname3'])){
@@ -77,16 +77,5 @@ if(isset($_POST['firstname3'])){
         'Birthday' => $birthday3,
         'Id'=>$id3
     ]);
-    header("Location: cards.html");
+    header("Location: index.html");
 }
-
-
-
-// echo"<pre>";
-// print_r($_POST);
-// echo"<pre>";
-// print_r($person2Arr);
-// echo"<pre>";
-// print_r($person3Arr);
-// echo"<pre>";
-exit;

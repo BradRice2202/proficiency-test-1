@@ -1,5 +1,13 @@
+var IdNo1 = document.getElementById('idNo1InputLeft').innerHTML;
+var IdNo2 = document.getElementById('idNo2InputMiddle').value;
+var IdNo3 = document.getElementById('idNo3InputRight').value;
+
 jQuery.validator.addMethod("notEqual", function(value, element, param) {
-    return this.optional(element) || value != param;
+    return this.optional(element) || value != param.val();
+}, "ID already selected");
+
+jQuery.validator.addMethod("notEqual2", function(value, element, param) {
+    return this.optional(element) || value != param.val();
 }, "ID already selected");
 
 $("#personalDetailsForm").validate({
@@ -16,6 +24,8 @@ $("#personalDetailsForm").validate({
         idnumber1: {
             required: true,
             minlength:13,
+            notEqual:$('#idNo2InputMiddle'),
+            notEqual2:$('#idNo3InputRight'),
         },
         firstName2:{
             required: true,
@@ -29,7 +39,8 @@ $("#personalDetailsForm").validate({
         idnumber2: {
             required: true,
             minlength:13,
-            notEqual:idnumber1,
+            notEqual:$('#idNo1InputLeft'),
+            notEqual2:$('#idNo3InputRight'),
         },
         firstName3:{
             required: true,
@@ -43,7 +54,8 @@ $("#personalDetailsForm").validate({
         idnumber3: {
             required: true,
             minlength:13,
-            notEqual:idnumber2,
+            notEqual:$('#idNo1InputLeft'),
+            notEqual2:$('#idNo2InputMiddle'),
         }
     },
     messages:{
@@ -59,8 +71,6 @@ $("#personalDetailsForm").validate({
         idnumber1:{
             required:"Please input your ID number",
             minlength:"ID too short - must be 13 characters",
-            notEqual:"can not have identical ID numbers",
-            notEqual:"can not have identical ID numbers",
         },
         firstName2:{
             required:"Please enter your firstname",
@@ -74,8 +84,6 @@ $("#personalDetailsForm").validate({
         idnumber2:{
             required:"Please input your ID number",
             minlength:"ID too short - must be 13 characters",
-            notEqual:"can not have identical ID numbers",
-            notEqual:"can not have identical ID numbers",
         },
         firstName3:{
             required:"Please enter your firstname",
@@ -89,13 +97,11 @@ $("#personalDetailsForm").validate({
         idnumber3:{
             required:"Please input your ID number",
             minlength:"ID too short - must be 13 characters",
-            notEqual:"can not have identical ID numbers",
-            notEqual:"can not have identical ID numbers"
         }
     },
 
     submitHandler: function(form) {
-        console.log("HERE!!");
+        // console.log("HERE!!");
       form.submit();
     }
 });
