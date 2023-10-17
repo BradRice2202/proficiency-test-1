@@ -19,63 +19,141 @@ $collection = $db->Persons;
 //     'ID Number'=>'9702225109083'
 // ]);
 
-$person1Arr = array();
-$person2Arr = array();
-$person3Arr = array();
+// $person1Arr = array();
+// $person2Arr = array();
+// $person3Arr = array();
 
-if(isset($_POST['firstname1'])){
+function addPersonInfo($personArr, $name, $surname, $dob, $id)
+{
+
+    $personArr = $personArr;
+
+    $personArr = array();
+
+    $personArr = array([
+        'Name' => $name,
+        'Surname' => $surname,
+        'Birthdate' => $dob,
+        'ID number' => $id,
+    ]);
+
+    return $personArr;
+};
+
+if (isset($_POST['submitPeople'])) {
+    $person1Arr = array();
     $name1 = $_POST['firstName1'];
     $surname1 = $_POST['surname1'];
 
     $birthday = strval($_POST['birthdate1']);
-    $birthday = explode('-',$birthday);
-    $birthday = $birthday[2].'-'.$birthday[1].'-'.$birthday[0];
+    $birthday = explode('-', $birthday);
+    $birthday = $birthday[2] . '-' . $birthday[1] . '-' . $birthday[0];
     $birthday1 = $birthday;
     $id1 = $_POST['idnumber1'];
 
-    $person1Arr = ([
-        'Name' => $name1,
-        'Surname' => $surname1,
-        'Birthday' => $birthday1,
-        'Id'=>$id1
-    ]);
-    header("Location: index.html");
-}
+    // $person1Arr = addPersonInfo($person1Arr,$name1,$surname1,$birthday1,$id1);
 
-if(isset($_POST['firstname2'])){
+    // $person1Arr = ([
+    //     'Name' => $name1,
+    //     'Surname' => $surname1,
+    //     'Birthdate' => $birthday1,
+    //     'ID number' => $id1,
+    // ]);
+
+
+    $person2Arr = array();
     $name2 = $_POST['firstName2'];
     $surname2 = $_POST['surname2'];
 
     $birthday = strval($_POST['birthdate2']);
-    $birthday = explode('-',$birthday);
-    $birthday = $birthday[2].'-'.$birthday[1].'-'.$birthday[0];
+    $birthday = explode('-', $birthday);
+    $birthday = $birthday[2] . '-' . $birthday[1] . '-' . $birthday[0];
     $birthday2 = $birthday;
     $id2 = $_POST['idnumber2'];
 
-    $person2Arr = ([
-        'Name' => $name2,
-        'Surname' => $surname2,
-        'Birthday' => $birthday2,
-        'Id'=>$id2
-    ]);
-    header("Location: index.html");
-}
-
-if(isset($_POST['firstname3'])){
+    $person3Arr = array();
     $name3 = $_POST['firstName3'];
     $surname3 = $_POST['surname3'];
 
     $birthday = strval($_POST['birthdate3']);
-    $birthday = explode('-',$birthday);
-    $birthday = $birthday[2].'-'.$birthday[1].'-'.$birthday[0];
+    $birthday = explode('-', $birthday);
+    $birthday = $birthday[2] . '-' . $birthday[1] . '-' . $birthday[0];
     $birthday3 = $birthday;
     $id3 = $_POST['idnumber3'];
 
-    $person3Arr = ([
-        'Name' => $name3,
-        'Surname' => $surname3,
-        'Birthday' => $birthday3,
-        'Id'=>$id3
+    $_SESSION['peopleArr'] = ([
+        $person1 = ([
+            'Name' => $name1,
+            'Surname' => $surname1,
+            'Birthdate' => $birthday1,
+            'ID Number' => $id1,
+        ]),
+        $person2 = ([
+            'Name' => $name2,
+            'Surname' => $surname2,
+            'Birthdate' => $birthday2,
+            'ID Number' => $id2,
+        ]),
+        $person3 = ([
+            'Name' => $name3,
+            'Surname' => $surname3,
+            'Birthdate' => $birthday3,
+            'ID Number' => $id3,
+        ])
     ]);
-    header("Location: index.html");
+
+    header("Location:home.php?created=true");
+}
+
+
+
+if (isset($_GET['upload'])) {
+    if($_GET['upload'] == 0){
+
+        $insertOneResult = $collection->insertOne($_SESSION['peopleArr'][0]);
+        header("Location:home.php?created=true&uploaded=0");
+
+    }elseif($_GET['upload'] == 1){
+
+        $insertOneResult = $collection->insertOne($_SESSION['peopleArr'][1]);
+        header("Location:home.php?created=true&uploaded=1");
+
+    }elseif($_GET['upload'] == 2){
+
+        $insertOneResult = $collection->insertOne($_SESSION['peopleArr'][2]);
+        header("Location:home.php?created=true&uploaded=2");
+
+    }
+
+    // header("Location:home.php?created=true");
+};
+
+if(isset($_GET['remove']))
+{
+    if($_GET['remove'] == 0)
+    {
+        $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][0]);
+        header("Location:home.php?created=true&removed=0");
+    }
+    elseif($_GET['remove'] == 1)
+    {
+        $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][1]);
+        header("Location:home.php?created=true&removed=0");
+    }
+    elseif($_GET['remove'] == 2)
+    {
+        $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][2]);
+        header("Location:home.php?created=true&removed=0");
+    }
+}
+
+if(isset($_POST['restart'])){
+    $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][0]);
+    $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][1]);
+    $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][2]);
+
+    $_SESSION = array();
+
+    header("Location:home.php?restart=true");
+
 }

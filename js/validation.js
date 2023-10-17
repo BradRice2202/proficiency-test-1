@@ -24,6 +24,7 @@ $("#personalDetailsForm").validate({
         idnumber1: {
             required: true,
             minlength:13,
+            maxlength:13,
             notEqual:$('#idNo2InputMiddle'),
             notEqual2:$('#idNo3InputRight'),
         },
@@ -39,6 +40,7 @@ $("#personalDetailsForm").validate({
         idnumber2: {
             required: true,
             minlength:13,
+            maxlength:13,
             notEqual:$('#idNo1InputLeft'),
             notEqual2:$('#idNo3InputRight'),
         },
@@ -54,6 +56,7 @@ $("#personalDetailsForm").validate({
         idnumber3: {
             required: true,
             minlength:13,
+            maxlength:13,
             notEqual:$('#idNo1InputLeft'),
             notEqual2:$('#idNo2InputMiddle'),
         }
@@ -71,6 +74,7 @@ $("#personalDetailsForm").validate({
         idnumber1:{
             required:"Please input your ID number",
             minlength:"ID too short - must be 13 characters",
+            maxlength:"ID can not be longer than 13 numbers",
         },
         firstName2:{
             required:"Please enter your firstname",
@@ -84,6 +88,7 @@ $("#personalDetailsForm").validate({
         idnumber2:{
             required:"Please input your ID number",
             minlength:"ID too short - must be 13 characters",
+            maxlength:"ID can not be longer than 13 numbers",
         },
         firstName3:{
             required:"Please enter your firstname",
@@ -97,6 +102,7 @@ $("#personalDetailsForm").validate({
         idnumber3:{
             required:"Please input your ID number",
             minlength:"ID too short - must be 13 characters",
+            maxlength:"ID can not be longer than 13 numbers",
         }
     },
 

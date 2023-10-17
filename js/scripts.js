@@ -1,3 +1,113 @@
+const url = new URL(window.location.href);
+
+if(url.searchParams.has('uploaded')){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    // const created = urlParams.get('created');
+    const uploaded = urlParams.get('uploaded');
+    document.getElementById('the-container').setAttribute('style', 'display:none !important');
+    document.getElementById('main-cards-container').setAttribute('style', 'display:flex !important');
+    if(uploaded == 0)
+    {   
+        document.getElementById('dbSuccess').style.display = "block";
+        document.getElementById('dbSuccess').style.visibility = "visible";
+
+        setTimeout(
+            function() 
+            {
+                document.getElementById('dbSuccess').setAttribute('style', 'display:none !important');
+                document.getElementById('dbSuccess').style.visibility = "hiddenn";
+            }, 5000);
+    }
+    if(uploaded == 1)
+    {
+        
+        document.getElementById('dbSuccess').style.display = "block";
+        document.getElementById('dbSuccess').style.visibility = "visible";
+
+        setTimeout(
+            function() 
+            {
+                document.getElementById('dbSuccess').setAttribute('style', 'display:none !important');
+                document.getElementById('dbSuccess').style.visibility = "hiddenn";
+            }, 5000);
+    }
+    if(uploaded == 2)
+    {
+        document.getElementById('dbSuccess').style.display = "block";
+        document.getElementById('dbSuccess').style.visibility = "visible";
+
+        setTimeout(
+            function() 
+            {
+                document.getElementById('dbSuccess').setAttribute('style', 'display:none !important');
+                document.getElementById('dbSuccess').style.visibility = "hiddenn";
+            }, 5000);
+    }
+}
+
+if(url.searchParams.has('created')){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const created = urlParams.get('created');
+    if(created == true){
+        document.getElementById('the-container').setAttribute('style', 'display:none !important');
+        document.getElementById('main-cards-container').setAttribute('style', 'display:flex !important');
+    }
+    
+}
+
+if(url.searchParams.has('created')){
+    document.getElementById('the-container').setAttribute('style', 'display:none !important');
+    document.getElementById('main-cards-container').setAttribute('style', 'display:flex !important');
+}
+
+if(url.searchParams.has('removed')){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const removed = urlParams.get('removed');
+    if(removed == 0)
+    {
+        console.log(removed);
+        document.querySelector('.left-card-container').setAttribute('style', 'display:none !important');
+        document.getElementById('removeOneSuccess').style.display = "block";
+        document.getElementById('removeOneSuccess').style.visibility = "visible";
+
+        setTimeout(
+            function() 
+            {
+                document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
+                document.getElementById('removeOneSuccess').style.visibility = "hiddenn";
+            }, 5000);
+
+    }elseif(removed == 1)
+    {
+        document.getElementsByClassName('middle-card-container').setAttribute('style', 'display:none !important');
+        document.getElementById('removeOneSuccess').style.display = "block";
+        document.getElementById('removeOneSuccess').style.visibility = "visible";
+
+        setTimeout(
+            function() 
+            {
+                document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
+                document.getElementById('removeOneSuccess').style.visibility = "hiddenn";
+            }, 5000);
+    }elseif(removed == 2)
+    {
+        document.getElementsByClassName('right-card-container').setAttribute('style', 'display:none !important');
+        document.getElementById('removeOneSuccess').style.display = "block";
+        document.getElementById('removeOneSuccess').style.visibility = "visible";
+
+        setTimeout(
+            function() 
+            {
+                document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
+                document.getElementById('removeOneSuccess').style.visibility = "hiddenn";
+            }, 5000);
+    }
+}
+
+
 function addToIdFromDobLeft(){
     const birthDate = document.getElementById('birthDate1InputLeft').value;
     const firstOfId = String(birthDate);
@@ -56,18 +166,6 @@ function addToIdFromDobRight(){
     console.log(idLen)    
 }
 
-// function checkDuplicateID(){
-//     // var firstName1 = document.getElementById('name1Input').value;
-//     var firstName2 = document.getElementById('name2Input').value;
-
-//     if(firstName2 == document.getElementById('name1Input').value){
-//         alert('ID already used');
-//     }
-
-//     return;
-
-// };
-
 function postValues(x){
     if(x == 1)
     {
@@ -92,18 +190,6 @@ function postValues(x){
     }
 }
 
-function createPeople(name,surname,birthday,id){
-    document.getElementById('mainContainer').setAttribute('style', 'display:none !important');
-}
-
-// function validate() {
-//     var firstname1 = document.getElementById('name1Input').value;
-//     var firstname2 = document.getElementById('name2Input').value;
-//     var firstname3 = document.getElementById('name3Input').value;
-//     if (firstname1 == firstname2) {
-//         alert("You have multiple of the same ID numbers");
-//         return false;
-//     }
-
-//     return true;
+// function createPeople(name,surname,birthday,id){
+//     document.getElementById('mainContainer').setAttribute('style', 'display:none !important');
 // }
