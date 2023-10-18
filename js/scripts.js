@@ -1,14 +1,23 @@
 const url = new URL(window.location.href);
 
+if(url.search == ''){
+    document.cookie="removed1="+'';
+    document.cookie="removed2="+'';
+    document.cookie="removed3="+'';
+    document.cookie="uploaded1="+'';
+    document.cookie="uploaded2="+'';
+    document.cookie="uploaded3="+'';
+}
+
 if(url.searchParams.has('uploaded')){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    // const created = urlParams.get('created');
     const uploaded = urlParams.get('uploaded');
     document.getElementById('the-container').setAttribute('style', 'display:none !important');
     document.getElementById('main-cards-container').setAttribute('style', 'display:flex !important');
     if(uploaded == 0)
     {   
+        document.cookie="uploaded1="+1;
         document.getElementById('dbSuccess').style.display = "block";
         document.getElementById('dbSuccess').style.visibility = "visible";
 
@@ -17,11 +26,11 @@ if(url.searchParams.has('uploaded')){
             {
                 document.getElementById('dbSuccess').setAttribute('style', 'display:none !important');
                 document.getElementById('dbSuccess').style.visibility = "hiddenn";
-            }, 5000);
+            }, 2000);
     }
     if(uploaded == 1)
     {
-        
+        document.cookie="uploaded2="+2;
         document.getElementById('dbSuccess').style.display = "block";
         document.getElementById('dbSuccess').style.visibility = "visible";
 
@@ -30,10 +39,11 @@ if(url.searchParams.has('uploaded')){
             {
                 document.getElementById('dbSuccess').setAttribute('style', 'display:none !important');
                 document.getElementById('dbSuccess').style.visibility = "hiddenn";
-            }, 5000);
+            }, 2000);
     }
     if(uploaded == 2)
     {
+        document.cookie="uploaded3="+3;
         document.getElementById('dbSuccess').style.display = "block";
         document.getElementById('dbSuccess').style.visibility = "visible";
 
@@ -42,8 +52,23 @@ if(url.searchParams.has('uploaded')){
             {
                 document.getElementById('dbSuccess').setAttribute('style', 'display:none !important');
                 document.getElementById('dbSuccess').style.visibility = "hiddenn";
-            }, 5000);
+            }, 2000);
     }
+}
+
+if(getCookie('uploaded1') == 1){
+    document.getElementById('upload-to-db-1').setAttribute('style', 'display:none !important');
+    document.getElementById('remove-person-1').innerHTML = "Remove from DB and delete";
+}
+
+if(getCookie('uploaded2') == 2){
+    document.getElementById('upload-to-db-2').setAttribute('style', 'display:none !important');
+    document.getElementById('remove-person-2').innerHTML = "Remove from DB and delete";
+}
+
+if(getCookie('uploaded3') == 3){
+    document.getElementById('upload-to-db-3').setAttribute('style', 'display:none !important');
+    document.getElementById('remove-person-3').innerHTML = "Remove from DB and delete";
 }
 
 if(url.searchParams.has('created')){
@@ -62,49 +87,92 @@ if(url.searchParams.has('created')){
     document.getElementById('main-cards-container').setAttribute('style', 'display:flex !important');
 }
 
+if(url.searchParams.has('restart')){
+    document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
+}
+
+if(url.searchParams.has('restart')){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const restart = urlParams.get('restart');
+    if(restart){
+        document.querySelector('.removeAllSuccess').setAttribute('style', 'display:flex !important');
+        setTimeout(
+            function() 
+            {
+            document.getElementById('removeAllSuccess').setAttribute('style', 'display:none !important');
+            }, 2000);
+    }
+
+        document.cookie="removed1="+'';
+        document.cookie="removed2="+'';
+        document.cookie="removed3="+'';
+        document.cookie="uploaded1="+'';
+        document.cookie="uploaded2="+'';
+        document.cookie="uploaded3="+'';
+    
+}
+
 if(url.searchParams.has('removed')){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const removed = urlParams.get('removed');
     if(removed == 0)
     {
-        console.log(removed);
-        document.querySelector('.left-card-container').setAttribute('style', 'display:none !important');
-        document.getElementById('removeOneSuccess').style.display = "block";
-        document.getElementById('removeOneSuccess').style.visibility = "visible";
-
-        setTimeout(
-            function() 
-            {
-                document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
-                document.getElementById('removeOneSuccess').style.visibility = "hiddenn";
-            }, 5000);
-
-    }elseif(removed == 1)
-    {
-        document.getElementsByClassName('middle-card-container').setAttribute('style', 'display:none !important');
-        document.getElementById('removeOneSuccess').style.display = "block";
-        document.getElementById('removeOneSuccess').style.visibility = "visible";
-
-        setTimeout(
-            function() 
-            {
-                document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
-                document.getElementById('removeOneSuccess').style.visibility = "hiddenn";
-            }, 5000);
-    }elseif(removed == 2)
-    {
-        document.getElementsByClassName('right-card-container').setAttribute('style', 'display:none !important');
-        document.getElementById('removeOneSuccess').style.display = "block";
-        document.getElementById('removeOneSuccess').style.visibility = "visible";
-
-        setTimeout(
-            function() 
-            {
-                document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
-                document.getElementById('removeOneSuccess').style.visibility = "hiddenn";
-            }, 5000);
+        document.cookie="removed1="+1; 
     }
+    if(removed == 1)
+    {
+        document.cookie="removed2="+2;
+    }
+    if(removed == 2)
+    {
+        document.cookie="removed3="+3;
+    }
+}
+
+if(getCookie('removed1') == 1){
+    document.querySelector('.left-card-container').setAttribute('style', 'display:none !important');
+    // document.querySelector('.left-card-container').classList.add('testHide');
+    document.getElementById('removeOneSuccess').style.display = "block";
+    document.getElementById('removeOneSuccess').style.visibility = "visible";
+
+    setTimeout(
+        function() 
+        {
+            document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
+            document.getElementById('removeOneSuccess').style.visibility = "hidden";
+        }, 2000);
+}
+
+if(getCookie('removed2') == 2){
+    document.querySelector('.middle-card-container').setAttribute('style', 'display:none !important');
+        document.getElementById('removeOneSuccess').style.display = "block";
+        document.getElementById('removeOneSuccess').style.visibility = "visible";
+
+        setTimeout(
+            function() 
+            {
+                document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
+                document.getElementById('removeOneSuccess').style.visibility = "hidden";
+            }, 2000);
+}
+
+if(getCookie('removed3') == 3){
+    document.querySelector('.right-card-container').setAttribute('style', 'display:none !important');
+        document.getElementById('removeOneSuccess').style.display = "block";
+        document.getElementById('removeOneSuccess').style.visibility = "visible";
+
+        setTimeout(
+            function() 
+            {
+                document.getElementById('removeOneSuccess').setAttribute('style', 'display:none !important');
+                document.getElementById('removeOneSuccess').style.visibility = "hidden";
+            }, 2000);
+}
+
+if(getCookie('removed1') == 1 && getCookie('removed2') == 2 && getCookie('removed3') == 3){
+    document.querySelector(".remove-persons-btn").innerHTML="Restart";
 }
 
 
@@ -166,30 +234,21 @@ function addToIdFromDobRight(){
     console.log(idLen)    
 }
 
-function postValues(x){
-    if(x == 1)
-    {
-       var name1 = document.getElementById('firstName1').value;
-       var surname1 = document.getElementById('surname1').value;
-       var birthday1 = document.getElementById('birthdate1').value;
-       var id1 = document.getElementById('idnumber1').value;
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
     }
-    elseif(x == 2)
+    else
     {
-        var name2 = document.getElementById('firstName2').value;
-        var surname2 = document.getElementById('surname2').value;
-        var birthday2 = document.getElementById('birthdate2').value;
-        var id2 = document.getElementById('idnumber2').value;
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
     }
-    elseif(x == 3)
-    {
-        var name3 = document.getElementById('firstName3').value;
-        var surname3 = document.getElementById('surname3').value;
-        var birthday3 = document.getElementById('birthdate3').value;
-        var id3 = document.getElementById('idnumber3').value;
-    }
+    return decodeURI(dc.substring(begin + prefix.length, end));
 }
-
-// function createPeople(name,surname,birthday,id){
-//     document.getElementById('mainContainer').setAttribute('style', 'display:none !important');
-// }

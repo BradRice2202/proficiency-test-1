@@ -21,7 +21,7 @@
     <div class="alert alert-danger" id="removeOneSuccess" role="alert">
         Record deleted from database!
     </div>
-    <div class="alert alert-danger" id="removeAllSuccess" role="alert">
+    <div class="alert alert-danger removeAllSuccess" id="removeAllSuccess" role="alert">
         All records deleted from database!
     </div>
     <div class="container the-container align-items-center" id="the-container">
@@ -119,10 +119,10 @@
                       <h4>Birthdate: <?php echo $_SESSION['peopleArr'][0]['Birthdate'] ?></h4>
                       <h4>ID: <?php echo $_SESSION['peopleArr'][0]['ID Number'] ?>
                       </h4>
-                      <a href="index.php?upload=0" class="btn btn-primary">Upload to DB</a>
-                      <a href="index.php?remove=0" class="btn btn-danger">Remove</a>
+                      <a href="index.php?upload=0" class="btn btn-primary" id="upload-to-db-1">Upload to DB</a>
+                      <a href="index.php?remove=0" class="btn btn-danger" id="remove-person-1">Remove</a>
                     </div>
-                  </div>
+                </div>
             </div>
             <div class="middle-card-container">
                 <div class="card">
@@ -130,10 +130,10 @@
                       <h5 class="card-title" id="personName2"><?php echo $_SESSION['peopleArr'][1]['Name']." ".$_SESSION['peopleArr'][1]['Surname'] ?></h5>
                       <h4>Birthdate: <?php echo $_SESSION['peopleArr'][1]['Birthdate'] ?></h4>
                       <h4>ID: <?php echo $_SESSION['peopleArr'][1]['ID Number'] ?></h4>
-                      <a href="index.php?upload=1" class="btn btn-primary">Upload to DB</a>
-                      <a href="index.php?remove=1" class="btn btn-danger">Remove</a>
+                      <a href="index.php?upload=1" class="btn btn-primary" id="upload-to-db-2">Upload to DB</a>
+                      <a href="index.php?remove=1" class="btn btn-danger" id="remove-person-2">Remove</a>
                     </div>
-                  </div>
+                </div>
             </div>
             <div class="right-card-container">
                 <div class="card">
@@ -141,15 +141,15 @@
                       <h5 class="card-title" id="personName3"><?php echo $_SESSION['peopleArr'][2]['Name']." ".$_SESSION['peopleArr'][2]['Surname'] ?></h5>
                       <h4>Birthdate: <?php echo $_SESSION['peopleArr'][2]['Birthdate'] ?></h4>
                       <h4>ID: <?php echo $_SESSION['peopleArr'][2]['ID Number'] ?></h4>
-                      <a href="index.php?upload=2" class="btn btn-primary">Upload to DB</a>
-                      <a href="index.php?remove=2" class="btn btn-danger">Remove</a>
+                      <a href="index.php?upload=2" class="btn btn-primary" id="upload-to-db-3">Upload to DB</a>
+                      <a href="index.php?remove=2" class="btn btn-danger" id="remove-person-3">Remove</a>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
         <div class="reset-people-btn">
-            <form action="index.php" method="post" name="restart-form">
-                <button class="btn btn-danger remove-persons-btn" name="restart">Remove all and choose different people</button>
+            <form action="index.php?restart=true" method="post" name="restart-form">
+                <button type="submit" class="btn btn-danger remove-persons-btn" name="restart">Remove all and choose different people</button>
             </form>
         </div>
     </div>

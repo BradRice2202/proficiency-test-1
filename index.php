@@ -2,8 +2,6 @@
 
 session_start();
 
-// session_unset();
-
 require 'vendor/autoload.php';
 
 $m = new MongoDB\Client('mongodb://127.0.0.1:27017');
@@ -11,17 +9,6 @@ $m = new MongoDB\Client('mongodb://127.0.0.1:27017');
 $db = $m->profTest1;
 
 $collection = $db->Persons;
-
-// $insertOneResult = $collection->insertOne([
-//     'Name'=>'Bradley',
-//     'Surname'=>'Rice',
-//     'Date of Birth'=>'22-02-1997',
-//     'ID Number'=>'9702225109083'
-// ]);
-
-// $person1Arr = array();
-// $person2Arr = array();
-// $person3Arr = array();
 
 function addPersonInfo($personArr, $name, $surname, $dob, $id)
 {
@@ -50,16 +37,6 @@ if (isset($_POST['submitPeople'])) {
     $birthday = $birthday[2] . '-' . $birthday[1] . '-' . $birthday[0];
     $birthday1 = $birthday;
     $id1 = $_POST['idnumber1'];
-
-    // $person1Arr = addPersonInfo($person1Arr,$name1,$surname1,$birthday1,$id1);
-
-    // $person1Arr = ([
-    //     'Name' => $name1,
-    //     'Surname' => $surname1,
-    //     'Birthdate' => $birthday1,
-    //     'ID number' => $id1,
-    // ]);
-
 
     $person2Arr = array();
     $name2 = $_POST['firstName2'];
@@ -105,8 +82,6 @@ if (isset($_POST['submitPeople'])) {
     header("Location:home.php?created=true");
 }
 
-
-
 if (isset($_GET['upload'])) {
     if($_GET['upload'] == 0){
 
@@ -124,8 +99,6 @@ if (isset($_GET['upload'])) {
         header("Location:home.php?created=true&uploaded=2");
 
     }
-
-    // header("Location:home.php?created=true");
 };
 
 if(isset($_GET['remove']))
@@ -133,26 +106,46 @@ if(isset($_GET['remove']))
     if($_GET['remove'] == 0)
     {
         $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][0]);
+
+        $_SESSION['peopleArr'][0] = null;
+
         header("Location:home.php?created=true&removed=0");
     }
     elseif($_GET['remove'] == 1)
     {
         $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][1]);
-        header("Location:home.php?created=true&removed=0");
+
+        $_SESSION['peopleArr'][1] = null;
+
+        header("Location:home.php?created=true&removed=1");
     }
     elseif($_GET['remove'] == 2)
     {
         $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][2]);
-        header("Location:home.php?created=true&removed=0");
+
+        $_SESSION['peopleArr'][2] = null;
+
+        header("Location:home.php?created=true&removed=2");
     }
 }
 
 if(isset($_POST['restart'])){
-    $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][0]);
-    $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][1]);
-    $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][2]);
-
-    $_SESSION = array();
+    if(isset($_SESSION['peopleArr'][0])){
+        $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][0]);
+        $_SESSION['peopleArr'][0] = null;
+    }
+    if(isset($_SESSION['peopleArr'][1])){
+        $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][1]);
+        $_SESSION['peopleArr'][1] = null;
+    }
+    if(isset($_SESSION['peopleArr'][2])){
+        $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][2]);
+        $_SESSION['peopleArr'][2] = null;
+    }
+    
+    // $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][2]);
+    
+    // $_SESSION = array();
 
     header("Location:home.php?restart=true");
 

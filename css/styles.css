@@ -165,16 +165,29 @@ input{
 }
 
 #dbSuccess{
+    position:absolute;
     visibility: hidden;
     display: none;
 }
 
 #removeOneSuccess{
+    position: absolute;
     visibility: hidden;
     display: none;
 }
 
 #removeAllSuccess{
-    visibility: hidden;
+    position: absolute;
+    /* visibility: hidden; */
     display: none;
+}
+
+.testShow{
+    display: flex;
+    visibility: visible;
+}
+
+.testHide{
+    display: none !important;
+    visibility: hidden;
 }
