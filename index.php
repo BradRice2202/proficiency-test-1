@@ -27,7 +27,8 @@ function addPersonInfo($personArr, $name, $surname, $dob, $id)
     return $personArr;
 };
 
-if (isset($_POST['submitPeople'])) {
+if (isset($_POST['submitPeople'])) 
+{
     $person1Arr = array();
     $name1 = $_POST['firstName1'];
     $surname1 = $_POST['surname1'];
@@ -82,22 +83,26 @@ if (isset($_POST['submitPeople'])) {
     header("Location:home.php?created=true");
 }
 
-if (isset($_GET['upload'])) {
-    if($_GET['upload'] == 0){
+if (isset($_GET['upload'])) 
+{
+    if($_GET['upload'] == 0)
+    {
 
         $insertOneResult = $collection->insertOne($_SESSION['peopleArr'][0]);
         header("Location:home.php?created=true&uploaded=0");
 
-    }elseif($_GET['upload'] == 1){
+    }
+    elseif($_GET['upload'] == 1)
+    {
 
         $insertOneResult = $collection->insertOne($_SESSION['peopleArr'][1]);
         header("Location:home.php?created=true&uploaded=1");
 
-    }elseif($_GET['upload'] == 2){
-
+    }
+    elseif($_GET['upload'] == 2)
+    {
         $insertOneResult = $collection->insertOne($_SESSION['peopleArr'][2]);
         header("Location:home.php?created=true&uploaded=2");
-
     }
 };
 
@@ -106,25 +111,19 @@ if(isset($_GET['remove']))
     if($_GET['remove'] == 0)
     {
         $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][0]);
-
         $_SESSION['peopleArr'][0] = null;
-
         header("Location:home.php?created=true&removed=0");
     }
     elseif($_GET['remove'] == 1)
     {
         $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][1]);
-
         $_SESSION['peopleArr'][1] = null;
-
         header("Location:home.php?created=true&removed=1");
     }
     elseif($_GET['remove'] == 2)
     {
         $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][2]);
-
         $_SESSION['peopleArr'][2] = null;
-
         header("Location:home.php?created=true&removed=2");
     }
 }
@@ -142,11 +141,5 @@ if(isset($_POST['restart'])){
         $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][2]);
         $_SESSION['peopleArr'][2] = null;
     }
-    
-    // $deleteOneResult = $collection->deleteOne($_SESSION['peopleArr'][2]);
-    
-    // $_SESSION = array();
-
     header("Location:home.php?restart=true");
-
 }
